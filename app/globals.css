@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   InfoBrains — Feedback 2026 / 2027
+   ========================================================= */
+
+:root {
+  --background: #050910;
+  --foreground: #e8eef7;
+  --brand-sky: #28bbe8;
+  --brand-bright: #3ed2ff;
+}
+
+html {
+  min-height: 100%;
+  background: var(--background);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-poppins), system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+body,
+button,
+textarea,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(40, 187, 232, 0.28);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050910;
+}
+::-webkit-scrollbar-thumb {
+  border: 2px solid #050910;
+  border-radius: 999px;
+  background: #182333;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #24354a;
+}
+
+*:focus {
+  outline: none;
+}
+*:focus-visible {
+  outline: 2px solid rgba(62, 210, 255, 0.65);
+  outline-offset: 3px;
+}
+
+/* ---------- Ambient background ---------- */
+
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(700px 460px at 50% -140px, rgba(40, 187, 232, 0.16), transparent 70%),
+    radial-gradient(520px 420px at 105% 30%, rgba(99, 102, 241, 0.08), transparent 72%),
+    radial-gradient(520px 420px at -10% 85%, rgba(40, 187, 232, 0.06), transparent 72%),
+    #050910;
+}
+
+.ambient-bg::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 28%;
+  width: 460px;
+  height: 460px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: rgba(40, 187, 232, 0.05);
+  filter: blur(100px);
+}
+
+/* ---------- Grid ---------- */
+
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 52px 52px;
+  opacity: 0.7;
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 42%, black 0%, black 35%, transparent 82%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 42%, black 0%, black 35%, transparent 82%);
+}
+
+/* ---------- Grain ---------- */
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.8'/%3E%3C/svg%3E");
+}
+
+.page-content {
+  position: relative;
+  z-index: 2;
+}
+
+button,
+a,
+textarea,
+input {
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease,
+    color 200ms ease,
+    box-shadow 200ms ease,
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.shell {
+  width: 100%;
+  max-width: 34rem; /* 544px */
+  margin-inline: auto;
+}
+
+/* Thin rule used between sections — a designer's tool, not a border */
+.rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.07) 50%,
+    transparent 100%
+  );
+}
+
+/* Success checkmark draw-in */
+@keyframes drawCheck {
+  from { stroke-dashoffset: 24; }
+  to   { stroke-dashoffset: 0; }
+}
+
+.check-draw path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  animation: drawCheck 600ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+/* Textarea autosize feel */
+textarea {
+  field-sizing: content;
+}
