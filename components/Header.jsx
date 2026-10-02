@@ -7,21 +7,13 @@ export default function Header() {
         <Image
           src="/infobrainsClubLogo.png"
           alt="InfoBrains"
-          width={100}
-          height={100}
+          width={90}
+          height={90}
           priority
           className=" object-contain"
         />
       </div>
 
-      <div className="flex flex-col leading-tight">
-        <span className="text-[16px] font-medium tracking-[-0.01em] text-white">
-          InfoBrains
-        </span>
-        <span className="mt-1 text-[12px] font-light tracking-wide text-slate-500">
-          Scientific Club
-        </span>
-      </div>
     </div>
   );
 }
